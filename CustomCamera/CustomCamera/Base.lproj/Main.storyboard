@@ -1,14 +1,16 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CustomCamera" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +18,49 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CgU-5n-KAz">
+                                <items>
+                                    <navigationItem title="Custom Camera" id="ilB-i7-RrG"/>
+                                </items>
+                            </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImgOverlay" translatesAutoresizingMaskIntoConstraints="NO" id="0hS-hc-3as">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="228" id="hHc-Va-3Ca"/>
+                                    <constraint firstAttribute="width" secondItem="0hS-hc-3as" secondAttribute="height" multiplier="57:32" id="mWl-52-dQt"/>
+                                    <constraint firstAttribute="height" constant="128" id="pHk-NE-dVE"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FHk-bq-Our">
+                                <frame key="frameInset" minX="134" minY="509" width="102" height="102"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="ImgCameraCaptureBtn"/>
+                                <connections>
+                                    <action selector="actionCameraCapture:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lFY-sy-mrx"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="CgU-5n-KAz" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="HEd-xk-bH8"/>
+                            <constraint firstItem="CgU-5n-KAz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="U2P-xw-u1P"/>
+                            <constraint firstAttribute="trailing" secondItem="CgU-5n-KAz" secondAttribute="trailing" id="Vdr-HZ-tI5"/>
+                            <constraint firstItem="0hS-hc-3as" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="kTs-eC-wOe"/>
+                            <constraint firstItem="0hS-hc-3as" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xIP-1Z-mln"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="btnCapture" destination="FHk-bq-Our" id="cd0-Od-h5E"/>
+                        <outlet property="imgOverlay" destination="0hS-hc-3as" id="Pf9-SE-RNc"/>
+                        <outlet property="navigationBar" destination="CgU-5n-KAz" id="KQt-70-Y82"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="ImgCameraCaptureBtn" width="102" height="102"/>
+        <image name="ImgOverlay" width="114" height="64"/>
+    </resources>
 </document>
